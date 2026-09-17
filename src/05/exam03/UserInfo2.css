@@ -1,0 +1,46 @@
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    min-width: 0;
+}
+
+.user-info-name {
+    min-width: 0;
+    margin: 0;
+    color: #1e293b;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.025em;
+    overflow-wrap: anywhere;
+}
+
+/* 아바타 이미지가 있는 경우 */
+.user-info > img {
+    display: block;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border: 1px solid #e8ecf2;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+}
+
+@media (max-width: 480px) {
+    .user-info {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .user-info-name {
+        font-size: 15px;
+    }
+
+    .user-info > img {
+        width: 38px;
+        height: 38px;
+    }
+}
