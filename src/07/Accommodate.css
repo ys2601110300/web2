@@ -1,0 +1,248 @@
+.accommodate-page,
+.accommodate-page *,
+.accommodate-page::before,
+.accommodate-page::after {
+    box-sizing: border-box;
+}
+
+.accommodate-page {
+    /* 부모 요소의 너비나 기본 body 여백에 영향을 받지 않는 전체 화면 */
+    position: fixed;
+    inset: 0;
+    isolation: isolate;
+    overflow-y: auto;
+
+    display: flex;
+    padding: 32px 20px;
+
+    color: #edf6ff;
+    font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+
+    background:
+            radial-gradient(
+                    ellipse at 15% 30%,
+                    rgba(0, 140, 195, 0.24),
+                    transparent 48%
+            ),
+            radial-gradient(
+                    ellipse at 85% 70%,
+                    rgba(42, 80, 199, 0.25),
+                    transparent 50%
+            ),
+            radial-gradient(
+                    ellipse at 65% 15%,
+                    rgba(0, 183, 183, 0.1),
+                    transparent 38%
+            ),
+            linear-gradient(145deg, #030b19, #071a32 55%, #050c1e);
+}
+
+/* 서로 다른 간격으로 배치한 작은 별빛 */
+.accommodate-page::before,
+.accommodate-page::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.accommodate-page::before {
+    opacity: 0.55;
+    background-image:
+            radial-gradient(
+                    circle at 24px 38px,
+                    rgba(231, 247, 255, 0.85) 0.8px,
+                    transparent 1.4px
+            ),
+            radial-gradient(
+                    circle at 96px 115px,
+                    rgba(117, 207, 255, 0.7) 1px,
+                    transparent 1.6px
+            ),
+            radial-gradient(
+                    circle at 153px 65px,
+                    rgba(255, 255, 255, 0.6) 0.6px,
+                    transparent 1.2px
+            );
+    background-size: 211px 193px, 307px 283px, 397px 347px;
+}
+
+.accommodate-page::after {
+    background:
+            radial-gradient(
+                    ellipse at 28% 75%,
+                    rgba(0, 173, 214, 0.1),
+                    transparent 42%
+            ),
+            radial-gradient(
+                    ellipse at 80% 20%,
+                    rgba(71, 119, 235, 0.12),
+                    transparent 40%
+            );
+}
+
+.accommodate-card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 560px;
+
+    /* 공간이 부족할 때는 상단부터 스크롤할 수 있도록 배치 */
+    margin: auto;
+    padding: 48px 36px 28px;
+
+    text-align: center;
+    border: 1px solid rgba(145, 207, 255, 0.22);
+    border-radius: 28px;
+
+    background: linear-gradient(
+            145deg,
+            rgba(17, 38, 64, 0.88),
+            rgba(7, 20, 40, 0.9)
+    );
+
+    box-shadow:
+            0 24px 70px rgba(0, 0, 0, 0.4),
+            0 0 45px rgba(27, 126, 191, 0.08),
+            inset 0 1px 0 rgba(220, 242, 255, 0.06);
+
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+}
+
+.accommodate-count {
+    margin: 0 0 32px;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.65;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+
+.accommodate-number {
+    color: #72eee2;
+    font-size: 1.35em;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 22px rgba(75, 224, 221, 0.2);
+}
+
+.accommodate-actions {
+    display: flex;
+    gap: 14px;
+}
+
+.accommodate-button {
+    flex: 1;
+    min-width: 0;
+    min-height: 56px;
+    padding: 14px 12px;
+
+    appearance: none;
+    border: 1px solid transparent;
+    border-radius: 14px;
+
+    color: #f5faff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    word-break: keep-all;
+
+    cursor: pointer;
+    transition:
+            transform 180ms ease,
+            filter 180ms ease,
+            box-shadow 180ms ease;
+}
+
+.accommodate-button-enter {
+    background: linear-gradient(135deg, #176cae, #2453b6);
+    border-color: rgba(124, 201, 255, 0.3);
+    box-shadow: 0 8px 22px rgba(13, 77, 155, 0.25);
+}
+
+.accommodate-button-exit {
+    background: rgba(13, 29, 50, 0.9);
+    border-color: rgba(157, 199, 236, 0.5);
+}
+
+@media (hover: hover) {
+    .accommodate-button:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.15);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    }
+}
+
+.accommodate-button:focus-visible {
+    outline: 3px solid #8ff5eb;
+    outline-offset: 5px;
+}
+
+.accommodate-button:active {
+    transform: translateY(0);
+    filter: brightness(0.96);
+}
+
+/* 두 줄 분량의 안내 공간을 항상 확보 */
+.accommodate-status {
+    display: grid;
+    place-items: center;
+    min-height: 56px;
+    margin-top: 20px;
+}
+
+.accommodate-warning {
+    margin: 0;
+    color: #ffad9e;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+
+@media (max-width: 480px) {
+    .accommodate-page {
+        padding: 24px 16px;
+    }
+
+    .accommodate-card {
+        padding: 36px 22px 22px;
+        border-radius: 22px;
+    }
+
+    .accommodate-count {
+        margin-bottom: 26px;
+        font-size: 26px;
+    }
+
+    .accommodate-actions {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .accommodate-button {
+        flex: auto;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .accommodate-button {
+        transition: none;
+    }
+
+    .accommodate-button:hover,
+    .accommodate-button:active {
+        transform: none;
+    }
+}
+
+.accommodate-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+    box-shadow: none;
+}
