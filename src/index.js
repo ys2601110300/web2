@@ -8,7 +8,9 @@ import './index.css';
 //import Clock from "./04/Clock";
 import reportWebVitals from './reportWebVitals'
 //import MyButton from "./08/MyButton";
-import Toggle2 from "./08/Toggle2";
+//import Toggle2 from "./08/Toggle2";
+//import MyButton from "./08/MyButton";
+import MyButton2 from "./08/MyButton2";
 //mport Toggle from "./08/Toggle";
 //import ConfirmDialog from "./04/ConfirmDialog";
 //import ConfirmDialogList from "./04/ConfirmDialogList";
@@ -26,7 +28,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 setInterval(() => {
     root.render(
         <React.StrictMode>
-            <Toggle2/>
+            <MyButton2/>
         </React.StrictMode>
         );
     }, 1000
