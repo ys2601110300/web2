@@ -7,6 +7,9 @@ import './index.css';
 // import "./03/enhanced_css/Book.css";
 //import Clock from "./04/Clock";
 import reportWebVitals from './reportWebVitals'
+//import MyButton from "./08/MyButton";
+import Toggle2 from "./08/Toggle2";
+//mport Toggle from "./08/Toggle";
 //import ConfirmDialog from "./04/ConfirmDialog";
 //import ConfirmDialogList from "./04/ConfirmDialogList";
 //import WelcomeList from "./05/exam01/WelcomeList";
@@ -16,14 +19,14 @@ import reportWebVitals from './reportWebVitals'
 //import Hook2 from "./07/Hook2useState";
 //import Hook3useEffect from "./07/01/useEffect";
 //import TextInputWithFocusButton from "./07/02/TextInputWithFocusButton";
-import Accommodate from "./07/Accommodate";
+//import Accommodate from "./07/Accommodate";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 setInterval(() => {
     root.render(
         <React.StrictMode>
-            <Accommodate />
+            <Toggle2/>
         </React.StrictMode>
         );
     }, 1000
