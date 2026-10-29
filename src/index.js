@@ -7,10 +7,19 @@ import './index.css';
 // import "./03/enhanced_css/Book.css";
 //import Clock from "./04/Clock";
 import reportWebVitals from './reportWebVitals'
+//import ConfirmButton from "./08/ConfirmButton";
+//import ConfirmButton2 from "./08/ConfirmButton2";
+//mport MessageSender from "./08/MessageSender";
+//import App from "./09/Rendering3";
+//import LoginControl from "./09/ex2/Element3";
+//import Mailbox from "./09/ex3/InLine";
+//import LogInControl from "./09/ex3/LogInControl";
+//import MainPage from "./09/ex4/MainPage";
+import LandingPage from "./09/finalex/LandingPage";
 //import MyButton from "./08/MyButton";
 //import Toggle2 from "./08/Toggle2";
 //import MyButton from "./08/MyButton";
-import MyButton2 from "./08/MyButton2";
+//import MyButton2 from "./08/MyButton2";
 //mport Toggle from "./08/Toggle";
 //import ConfirmDialog from "./04/ConfirmDialog";
 //import ConfirmDialogList from "./04/ConfirmDialogList";
@@ -28,7 +37,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 setInterval(() => {
     root.render(
         <React.StrictMode>
-            <MyButton2/>
+            <LandingPage/>
         </React.StrictMode>
         );
     }, 1000

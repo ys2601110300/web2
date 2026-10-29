@@ -1,0 +1,38 @@
+.mailbox {
+    width: calc(100% - 40px);
+    max-width: 480px;
+    margin: 80px auto;
+    padding: 36px 28px;
+    box-sizing: border-box;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.mailbox h1 {
+    margin: 0 0 20px;
+    color: #1e293b;
+    font-size: 28px;
+}
+
+.mailbox h2 {
+    margin: 0;
+    padding: 18px;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #475569;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.8;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
+.mailbox h2 span {
+    color: #2563eb;
+    font-size: 22px;
+    font-weight: 700;
+}
