@@ -1,0 +1,75 @@
+/* 전체 화면 중앙 정렬 및 배경색 */
+.fruit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    background-color: #f4f6f9;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 폼 카드 박스 */
+.fruit-form {
+    background-color: #ffffff;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* 라벨 영역과 버튼 사이 간격 (<br/> 대체) */
+}
+
+/* 라벨 스타일 */
+.fruit-label {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* 드롭다운(select) 박스 스타일 */
+.fruit-select {
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #334155;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 드롭다운 클릭(포커스) 시 강조 효과 */
+.fruit-select:focus {
+    border-color: #4f46e5;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* 제출 버튼 스타일 */
+.fruit-submit-btn {
+    padding: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* 버튼 마우스 오버 및 클릭 효과 */
+.fruit-submit-btn:hover {
+    background-color: #4338ca;
+}
+
+.fruit-submit-btn:active {
+    transform: scale(0.98);
+}

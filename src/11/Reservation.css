@@ -1,0 +1,68 @@
+body {
+    background-color: #f4f6f9;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 폼 카드 스타일 */
+.reservation-form {
+    max-width: 320px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 라벨 줄 정렬 */
+.reservation-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    padding: 8px 0;
+}
+
+/* 체크박스 스타일 */
+.reservation-checkbox {
+    width: 20px;
+    height: 20px;
+    accent-color: #4f46e5;
+    cursor: pointer;
+}
+
+/* 숫자 입력창 스타일 */
+.reservation-number {
+    width: 70px;
+    padding: 8px 10px;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+}
+
+.reservation-number:focus {
+    border-color: #4f46e5;
+}
+
+/* 제출 버튼 스타일 */
+.reservation-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #4f46e5;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.reservation-btn:hover {
+    background-color: #4338ca;
+}

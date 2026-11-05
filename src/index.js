@@ -15,7 +15,13 @@ import reportWebVitals from './reportWebVitals'
 //import Mailbox from "./09/ex3/InLine";
 //import LogInControl from "./09/ex3/LogInControl";
 //import MainPage from "./09/ex4/MainPage";
-import LandingPage from "./09/finalex/LandingPage";
+//import LandingPage from "./09/finalex/LandingPage";
+//import MapTest from "./10/ex1/MapTest";
+//import AttendanceBook from "./10/ex2/AttendanceBook";
+//import AttendanceCardBook from "./10/ex2/AttendanceCardBook";
+//import NameForm from "./11/NameForm";
+//import FruitSelect from "./11/FruitSelect";
+import Reservation from "./11/Reservation";
 //import MyButton from "./08/MyButton";
 //import Toggle2 from "./08/Toggle2";
 //import MyButton from "./08/MyButton";
@@ -37,7 +43,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 setInterval(() => {
     root.render(
         <React.StrictMode>
-            <LandingPage/>
+            <Reservation/>
         </React.StrictMode>
         );
     }, 1000
