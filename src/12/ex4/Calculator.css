@@ -1,0 +1,334 @@
+/* 다른 예제 화면에 영향을 주지 않도록 온도 변환기 안에만 적용합니다. */
+.temperature-page,
+.temperature-page * {
+    box-sizing: border-box;
+}
+
+.temperature-page {
+    min-height: 100vh;
+    padding: 54px 24px 36px;
+    color: #243c3a;
+    background: radial-gradient(ellipse at 90% 12%, #e0ece5 0, transparent 45%), #f5f5ef;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif;
+    line-height: 1.5;
+    text-align: left;
+    -webkit-font-smoothing: antialiased;
+}
+
+.temperature-app {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.temperature-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1.8px;
+}
+
+.temperature-brand-mark {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    color: #fff;
+    background: #226c5d;
+    font-size: 32px;
+    line-height: 1;
+    padding-top: 7px;
+}
+
+.temperature-edition {
+    margin-left: auto;
+    color: #737e76;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.temperature-header {
+    padding: 47px 0 32px;
+}
+
+.temperature-eyebrow {
+    margin: 0 0 13px;
+    color: #517669;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.temperature-header h1 {
+    margin: 0;
+    font-size: clamp(30px, 4.5vw, 43px);
+    line-height: 1.35;
+    letter-spacing: -2px;
+    font-weight: 750;
+    word-break: keep-all;
+}
+
+.temperature-description {
+    margin: 17px 0 0;
+    color: #78827a;
+    font-size: 14px;
+    word-break: keep-all;
+}
+
+.temperature-calculator {
+    padding: 30px;
+    border: 1px solid #e3e7df;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 12px 40px #344f3c08, 0 2px 6px #344f3c03;
+}
+
+.temperature-card-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.temperature-card-heading h2 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: -.5px;
+}
+
+.temperature-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border: 1px solid #e2ebe3;
+    border-radius: 20px;
+    color: #537d66;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.temperature-live > span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #67a47c;
+}
+
+.temperature-fields {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.temperature-field {
+    min-width: 0;
+    margin: 0;
+    padding: 19px 22px 16px;
+    border: 1px solid #d8e7e2;
+    border-radius: 15px;
+    background: #f2f8f5;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.temperature-field--f {
+    border-color: #eedfce;
+    background: #fdf7ef;
+}
+
+.temperature-field:focus-within {
+    border-color: #378d77;
+    box-shadow: 0 0 0 3px #378d771c;
+}
+
+.temperature-field--f:focus-within {
+    border-color: #bf7a3d;
+    box-shadow: 0 0 0 3px #bf7a3d1c;
+}
+
+.temperature-field-legend {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    color: #376e60;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.temperature-field--f .temperature-field-legend {
+    color: #a16c3b;
+}
+
+.temperature-scale-name {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1.3px;
+}
+
+.temperature-input-wrap {
+    clear: both;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding-top: 18px;
+}
+
+.temperature-input-wrap input {
+    width: 100%;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    outline: none;
+    color: #245b4c;
+    background: transparent;
+    font-family: inherit;
+    font-size: clamp(32px, 4.6vw, 48px);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -2px;
+    font-variant-numeric: tabular-nums;
+}
+
+.temperature-field--f input { color: #a76e38; }
+.temperature-input-wrap input::placeholder { color: #a9c3b8; opacity: 1; }
+.temperature-field--f input::placeholder { color: #d5bfa5; }
+
+.temperature-unit {
+    color: #7b9a8e;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+.temperature-field--f .temperature-unit { color: #b69a7a; }
+
+.temperature-field-caption {
+    margin: 10px 0 0;
+    color: #82968b;
+    font-size: 10px;
+}
+
+.temperature-field--f .temperature-field-caption { color: #a08d78; }
+
+.temperature-exchange {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e6e9e1;
+    border-radius: 50%;
+    background: #fff;
+    color: #7a867c;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+}
+
+.temperature-input-hint {
+    margin: 14px 0 24px;
+    color: #879087;
+    font-size: 11px;
+    text-align: center;
+    word-break: keep-all;
+}
+
+.temperature-verdict {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 18px;
+    border: 1px solid #e7eae2;
+    border-radius: 13px;
+    color: #5d7064;
+    background: #f8f9f5;
+}
+
+.temperature-verdict-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 38px;
+    height: 38px;
+    border: 1px solid #e0e7da;
+    border-radius: 11px;
+    background: #fff;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.temperature-verdict strong { display: block; font-size: 13px; }
+.temperature-verdict p { margin: 4px 0 0; font-size: 11px; line-height: 1.6; word-break: keep-all; }
+
+.temperature-verdict-badge {
+    flex-shrink: 0;
+    margin-left: auto;
+    padding: 4px 7px;
+    border: 1px solid currentColor;
+    border-radius: 5px;
+    font-size: 9px;
+    letter-spacing: .3px;
+}
+
+.temperature-verdict--calm { border-color: #dbeae3; background: #eff7f3; color: #3e7665; }
+.temperature-verdict--boiling { border-color: #f0d8bd; background: #fff5e9; color: #a3672b; }
+.temperature-verdict--boiling .temperature-verdict-icon { border-color: #eedac2; }
+
+.temperature-reference {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    margin-top: 27px;
+    padding-top: 23px;
+    border-top: 1px solid #edf0e9;
+}
+
+.temperature-reference > div { display: grid; gap: 4px; text-align: center; }
+.temperature-reference > div > span { color: #8b938a; font-size: 10px; }
+.temperature-reference strong { color: #596c60; font-size: 12px; font-weight: 600; }
+.temperature-reference strong span { margin: 0 6px; color: #a4ada1; font-weight: 400; }
+.temperature-reference-line { width: 1px; height: 25px; background: #e7ebe2; }
+
+.temperature-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 21px;
+    color: #8a9589;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.temperature-footer > :last-child { letter-spacing: 0; }
+
+@media (max-width: 580px) {
+    .temperature-page { padding: 28px 18px; }
+    .temperature-edition { display: none; }
+    .temperature-header { padding: 34px 0 26px; }
+    .temperature-header h1 { letter-spacing: -1.5px; }
+    .temperature-description { font-size: 12px; }
+    .temperature-calculator { padding: 22px 18px; border-radius: 20px; }
+    .temperature-fields { grid-template-columns: 1fr; gap: 18px; }
+    .temperature-field { padding: 17px 20px; }
+    .temperature-input-wrap { padding-top: 10px; }
+    .temperature-input-wrap input { font-size: 43px; }
+    .temperature-exchange { transform: translate(-50%, -50%) rotate(90deg); }
+    .temperature-verdict { flex-wrap: wrap; gap: 10px; padding: 14px; }
+    .temperature-verdict > div { flex: 1; min-width: 150px; }
+    .temperature-verdict-badge { margin-left: 48px; }
+    .temperature-reference { gap: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .temperature-field { transition: none; }
+}
