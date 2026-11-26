@@ -1,0 +1,244 @@
+/* 기본 리셋 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 라이트 모드 (갤러리 화이트) */
+.zr-page {
+    --bg: #f8f7f5;
+    --surface: #efede8;
+    --text: #141414;
+    --muted: #6e6d6a;
+    --line: #dedcd6;
+    --accent-bg: #141414;
+    --accent-text: #f8f7f5;
+
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Helvetica Neue", "Pretendard", -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: -0.01em;
+    transition: background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 다크 모드 (매트 차콜 블랙) */
+.zr-page[data-theme="dark"] {
+    --bg: #111110;
+    --surface: #1b1b19;
+    --text: #f3f2ee;
+    --muted: #8f8e89;
+    --line: #2a2a27;
+    --accent-bg: #f3f2ee;
+    --accent-text: #111110;
+}
+
+/* 상단 미니멀 헤더 */
+.zr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4vw;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.45s ease;
+}
+
+.zr-logo {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.zr-nav {
+    display: flex;
+    gap: 2.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+}
+
+.zr-nav span {
+    cursor: default;
+}
+
+/* 헤더 우측 흑백 전환 토글 버튼 */
+.zr-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.zr-toggle:hover {
+    background-color: var(--accent-bg);
+    color: var(--accent-text);
+    border-color: var(--accent-bg);
+}
+
+.zr-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+/* 메인 히어로 섹션 */
+.zr-hero {
+    padding: 6rem 4vw 4.5rem;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4vw;
+    align-items: end;
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.45s ease;
+}
+
+.zr-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+}
+
+.zr-title {
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+}
+
+.zr-hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.zr-desc {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 42ch;
+}
+
+/* 직각 아키텍처 스타일 메인 버튼 */
+.zr-cta {
+    background-color: var(--accent-bg);
+    color: var(--accent-text);
+    border: 1px solid var(--accent-bg);
+    padding: 0.95rem 2rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.25s ease, background-color 0.35s ease, color 0.35s ease;
+}
+
+.zr-cta:hover {
+    opacity: 0.82;
+}
+
+/* 하단 에디토리얼 3단 그리드 */
+.zr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.45s ease;
+}
+
+.zr-card {
+    padding: 2.5rem 4vw;
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: border-color 0.45s ease;
+}
+
+.zr-card:last-child {
+    border-right: none;
+}
+
+/* 이미지 대신 들어가는 미니멀 프레임 (원하면 <img>로 교체 가능) */
+.zr-frame {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--surface);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: flex-end;
+    padding: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: background-color 0.45s ease, border-color 0.45s ease;
+}
+
+.zr-card-num {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: var(--muted);
+}
+
+.zr-card-title {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.zr-card-text {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--muted);
+}
+
+/* 하단 푸터 */
+.zr-footer {
+    padding: 1.75rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .zr-nav {
+        display: none;
+    }
+
+    .zr-hero {
+        grid-template-columns: 1fr;
+        padding: 3.5rem 6vw;
+    }
+
+    .zr-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zr-card {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 2rem 6vw;
+    }
+
+    .zr-card:last-child {
+        border-bottom: none;
+    }
+}

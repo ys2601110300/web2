@@ -22,7 +22,16 @@ import reportWebVitals from './reportWebVitals'
 //import NameForm from "./11/NameForm";
 //import FruitSelect from "./11/FruitSelect";
 //import Reservation from "./11/Reservation";
-import DistanceConvert from "./12/ex5/DistanceConvert";
+//import DistanceConvert from "./12/ex5/DistanceConvert";
+//import WelcomeDialog from "./13/ex2/WelcomeDialog";
+//import Dialog from "./13/ex2/Dialog";
+//import WelcomeDialog from "./13/ex2/WelcomeDialog";
+//import SignUpDialog from "./13/ex3/SignUpDialog";
+//import Airbnb from "./13/airbnb/Airbnb";
+//import MainContent from "./14/MainContent";
+import DarkOrLight from "./14/DarkOrLight";
+//import AttendanceCardBook from "./10/ex2/AttendanceCardBook";
+//import Dialog from "./13/ex3/Dialog";
 //import MyButton from "./08/MyButton";
 //import Toggle2 from "./08/Toggle2";
 //import MyButton from "./08/MyButton";
@@ -44,7 +53,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 setInterval(() => {
     root.render(
         <React.StrictMode>
-            <DistanceConvert/>
+            <DarkOrLight/>>
         </React.StrictMode>
         );
     }, 1000
