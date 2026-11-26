@@ -153,41 +153,132 @@
     opacity: 0.82;
 }
 
-/* 하단 에디토리얼 3단 그리드 */
-.zr-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+/* 정렬 툴바 */
+.zr-toolbar {
+    padding: 1.25rem 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
     border-bottom: 1px solid var(--line);
     transition: border-color 0.45s ease;
 }
 
-.zr-card {
-    padding: 2.5rem 4vw;
-    border-right: 1px solid var(--line);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    transition: border-color 0.45s ease;
+.zr-count {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
 }
 
-.zr-card:last-child {
+.zr-toolbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.zr-select {
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--line);
+    padding: 0.45rem 0.85rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background-color 0.45s ease, color 0.45s ease, border-color 0.25s ease;
+}
+
+.zr-layout-group {
+    display: inline-flex;
+    border: 1px solid var(--line);
+}
+
+.zr-layout-btn {
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    border-right: 1px solid var(--line);
+    padding: 0.45rem 0.75rem;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.zr-layout-btn:last-child {
     border-right: none;
 }
 
-/* 이미지 대신 들어가는 미니멀 프레임 (원하면 <img>로 교체 가능) */
+.zr-layout-btn.is-active,
+.zr-layout-btn:hover {
+    background-color: var(--accent-bg);
+    color: var(--accent-text);
+}
+
+/* 6종 가구 그리드 (3열 / 2열 전환) */
+.zr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    transition: border-color 0.45s ease;
+}
+
+.zr-grid[data-layout="2col"] {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.zr-card {
+    padding: 2.25rem 3.5vw;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    transition: border-color 0.45s ease;
+}
+
+.zr-grid[data-layout="3col"] .zr-card:nth-child(3n),
+.zr-grid[data-layout="2col"] .zr-card:nth-child(2n) {
+    border-right: none;
+}
+
+/* 이미지 프레임 */
 .zr-frame {
     width: 100%;
     aspect-ratio: 4 / 3;
     background-color: var(--surface);
     border: 1px solid var(--line);
+    overflow: hidden;
+    transition: background-color 0.45s ease, border-color 0.45s ease;
+}
+
+.zr-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.45s ease;
+}
+
+.zr-card:hover .zr-frame img {
+    transform: scale(1.03);
+}
+
+/* 다크 모드에서 이미지 눈부심 완화 (흑백 사진을 원하면 grayscale(100%) 추가) */
+.zr-page[data-theme="dark"] .zr-frame img {
+    filter: brightness(0.9) contrast(1.04);
+}
+
+.zr-card-meta {
     display: flex;
-    align-items: flex-end;
-    padding: 1rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    transition: background-color 0.45s ease, border-color 0.45s ease;
+}
+
+.zr-card-price {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .zr-card-num {
@@ -240,5 +331,63 @@
 
     .zr-card:last-child {
         border-bottom: none;
+    }
+}
+
+/* 전체 그리드 최대 폭 제한 (원하는 크기로 조절) */
+.zr-toolbar,
+.zr-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* 이미지 박스 높이 고정 */
+.zr-frame {
+    width: 100%;
+    height: 220px; /* 더 작게 원하면 180px 정도로 조절 */
+    overflow: hidden;
+}
+
+/* 원본 해상도가 커도 박스 안에 딱 맞게 자르기 */
+.zr-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 헤더, 히어로, 푸터의 좌우 시작선을 아래 사진 라인에 정확히 정렬 (Y축 유지) */
+.zr-header,
+.zr-hero,
+.zr-footer {
+    padding-left: max(3.5vw, calc((100% - 1610px) / 2 + 3.5vw));
+    padding-right: max(3.5vw, calc((100% - 1610px) / 2 + 3.5vw));
+}
+
+/* 06 ITEMS 툴바도 사진 좌우 패딩(3.5vw)과 동일하게 맞춤 */
+.zr-toolbar {
+    padding-left: 3.5vw;
+    padding-right: 3.5vw;
+}
+
+/* Collection · Projects · About을 오른쪽 영역(DARK 버튼 옆)으로 이동 */
+.zr-nav {
+    margin-left: auto;
+    margin-right: 1.3rem;
+}
+
+/* 설명 문구와 SWITCH TO DARK MODE 버튼을 오른쪽 테두리 라인에 맞춤 */
+.zr-hero-right {
+    align-items: flex-end;
+    text-align: right;
+    justify-self: end;
+}
+
+/* 모바일(1열)에서는 다시 왼쪽 정렬 유지 */
+@media (max-width: 768px) {
+    .zr-hero-right {
+        align-items: flex-start;
+        text-align: left;
+        justify-self: start;
     }
 }

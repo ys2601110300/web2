@@ -1,9 +1,96 @@
-import { useContext } from "react";
+import { useContext, useState, useMemo } from "react";
 import ThemeContext from "./ThemeContext";
+import ondeImg from "./images/furn_01_onde.jpg";
+import linaImg from "./images/furn_02_lina.jpg";
+import kantImg from "./images/furn_03_kant.jpg";
+import ruheImg from "./images/furn_04_ruhe.jpg";
+import solImg from "./images/furn_05_sol.jpg";
+import feldImg from "./images/furn_06_feld.jpg";
+
+const FURNITURE_LIST = [
+    {
+        id: 1,
+        num: "01",
+        name: "ONDE Sideboard",
+        category: "Storage",
+        year: 2026,
+        price: 3800000,
+        desc: "정교한 수직 결이 살아있는 오크 원목 사이드보드.",
+        image: ondeImg,
+    },
+    {
+        id: 2,
+        num: "02",
+        name: "LINA Dining Table",
+        category: "Table",
+        year: 2025,
+        price: 4200000,
+        desc: "가늘게 테이퍼링된 다리가 돋보이는 월넛 다이닝 테이블.",
+        image: linaImg,
+    },
+    {
+        id: 3,
+        num: "03",
+        name: "KANT Lounge Chair",
+        category: "Chair",
+        year: 2026,
+        price: 1950000,
+        desc: "애쉬 원목 프레임과 오트밀 린넨 쿠션의 라운지 체어.",
+        image: kantImg,
+    },
+    {
+        id: 4,
+        num: "04",
+        name: "RUHE Platform Bed",
+        category: "Bed",
+        year: 2024,
+        price: 3400000,
+        desc: "낮은 비례로 침실에 여백을 더하는 오크 플랫폼 침대.",
+        image: ruheImg,
+    },
+    {
+        id: 5,
+        num: "05",
+        name: "SOL Pendant Lamp",
+        category: "Lighting",
+        year: 2025,
+        price: 980000,
+        desc: "무광 세라믹 갓과 원목 소켓을 조합한 펜던트 조명.",
+        image: solImg,
+    },
+    {
+        id: 6,
+        num: "06",
+        name: "FELD Shelving Unit",
+        category: "Storage",
+        year: 2023,
+        price: 2650000,
+        desc: "열린 그리드 구조로 공간을 정돈하는 원목 선반 유닛.",
+        image: feldImg,
+    },
+];
 
 function MainContent() {
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const [sortBy, setSortBy] = useState("default");
+    const [layout, setLayout] = useState("3col");
     const isLight = theme === "light";
+
+    const sortedItems = useMemo(() => {
+        const list = [...FURNITURE_LIST];
+        switch (sortBy) {
+            case "name-asc":
+                return list.sort((a, b) => a.name.localeCompare(b.name));
+            case "price-asc":
+                return list.sort((a, b) => a.price - b.price);
+            case "price-desc":
+                return list.sort((a, b) => b.price - a.price);
+            case "year-desc":
+                return list.sort((a, b) => b.year - a.year || a.id - b.id);
+            default:
+                return list.sort((a, b) => a.id - b.id);
+        }
+    }, [sortBy]);
 
     return (
         <>
@@ -43,33 +130,61 @@ function MainContent() {
                     </div>
                 </section>
 
-                <section className="zr-grid">
-                    <article className="zr-card">
-                        <div className="zr-frame">01 / Light</div>
-                        <span className="zr-card-num">01</span>
-                        <h2 className="zr-card-title">Clarity</h2>
-                        <p className="zr-card-text">
-                            따뜻한 오프화이트 배경과 짙은 먹색 타이포그래피의 조화.
-                        </p>
-                    </article>
+                {/* 정렬 툴바 */}
+                <div className="zr-toolbar">
+                    <span className="zr-count">06 ITEMS</span>
 
-                    <article className="zr-card">
-                        <div className="zr-frame">02 / Space</div>
-                        <span className="zr-card-num">02</span>
-                        <h2 className="zr-card-title">Proportion</h2>
-                        <p className="zr-card-text">
-                            얇은 1px 그리드 선과 넓은 여백으로 시선을 정리합니다.
-                        </p>
-                    </article>
+                    <div className="zr-toolbar-controls">
+                        <select
+                            className="zr-select"
+                            value={sortBy}
+                            onChange={(e) => setSortBy(e.target.value)}
+                            aria-label="정렬 기준"
+                        >
+                            <option value="default">기본순 (01–06)</option>
+                            <option value="name-asc">이름순 (A–Z)</option>
+                            <option value="price-asc">가격 낮은순</option>
+                            <option value="price-desc">가격 높은순</option>
+                            <option value="year-desc">최신순 (연도)</option>
+                        </select>
 
-                    <article className="zr-card">
-                        <div className="zr-frame">03 / Shadow</div>
-                        <span className="zr-card-num">03</span>
-                        <h2 className="zr-card-title">Depth</h2>
-                        <p className="zr-card-text">
-                            다크 모드 전환 시 눈부심을 줄인 매트한 차콜 톤으로 바뀝니다.
-                        </p>
-                    </article>
+                        <div className="zr-layout-group">
+                            <button
+                                type="button"
+                                className={`zr-layout-btn ${layout === "3col" ? "is-active" : ""}`}
+                                onClick={() => setLayout("3col")}
+                            >
+                                3열
+                            </button>
+                            <button
+                                type="button"
+                                className={`zr-layout-btn ${layout === "2col" ? "is-active" : ""}`}
+                                onClick={() => setLayout("2col")}
+                            >
+                                2열
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 가구 6종 그리드 */}
+                <section className="zr-grid" data-layout={layout}>
+                    {sortedItems.map((item) => (
+                        <article className="zr-card" key={item.id}>
+                            <div className="zr-frame">
+                                <img src={item.image} alt={item.name} />
+                            </div>
+                            <div className="zr-card-meta">
+                                <span>{item.num} / {item.category}</span>
+                                <span>{item.year}</span>
+                            </div>
+                            <h2 className="zr-card-title">{item.name}</h2>
+                            <p className="zr-card-text">{item.desc}</p>
+                            <p className="zr-card-price">
+                                ₩{item.price.toLocaleString("ko-KR")}
+                            </p>
+                        </article>
+                    ))}
                 </section>
             </main>
 
